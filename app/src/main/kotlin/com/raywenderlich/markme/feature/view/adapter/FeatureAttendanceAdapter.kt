@@ -57,4 +57,13 @@ class FeatureAttendanceAdapter(val dataList: List<Student>?)
     }
 
     override fun getData(): List<Student>? = dataList
+
+    override fun updateData(data: List<Student>) {
+        data.forEach { student ->
+            dataList?.first { student.name == it.name }?.attendance = student.attendance
+        }
+        notifyDataSetChanged()
+    }
+
+
 }

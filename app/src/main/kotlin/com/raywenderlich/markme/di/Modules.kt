@@ -20,7 +20,8 @@ val applicationModule = module(override = true) {
     factory<MainContract.Presenter> { (view: MainContract.View) -> MainPresenter(view) }
     factory<FeatureContract.Presenter<Student>> { (view: FeatureContract.View<Student>) -> FeaturePresenter(view) }
     single<FeatureContract.Model<Student>> { AppRepository }
-    single<SharedPreferences> { androidContext().getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE) }
+    single<SharedPreferences> { androidContext().getSharedPreferences("SharedPreferences",
+        Context.MODE_PRIVATE) }
     single {
         Room.databaseBuilder(androidContext(),
                 AppDatabase::class.java, "app-database").build()
